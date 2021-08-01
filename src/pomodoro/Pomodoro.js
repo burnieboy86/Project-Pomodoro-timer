@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import classNames from "../utils/class-names";
 import useInterval from "../utils/useInterval";
 import { minutesToDuration, secondsToDuration } from "../utils/duration";
+import checkFocusIncrease from "../utils/increaseFocus";
+import checkFocusDecrease from "../utils/decreaseFocus";
+import checkBreakIncrease from "../utils/increaseBreak";
+import checkBreakDecrease from "../utils/decreaseBreak";
 
 // These functions are defined outside of the component to insure they do not have access to state
 // and are, therefore more likely to be pure.
@@ -66,7 +70,7 @@ function Pomodoro() {
    */
   useInterval(() => {
       if (session.timeRemaining === 0) {
-        new Audio("https://bigsoundbank.com/UPLOAD/mp3/1482.mp3").play();
+        new Audio("https://bigsoundbank.com/UPLOAD/mp3/0477.mp3").play();
         return setSession(nextSession(focusDuration, breakDuration));
       }
       return setSession(nextTick);
@@ -75,25 +79,26 @@ function Pomodoro() {
   );
 
   function increaseFocus() {
-    if(focusDuration < 60 && !isTimerRunning) {
+    if(checkFocusIncrease(focusDuration, isTimerRunning)) {
       setFocusDuration(focusDuration + 5)
     }
   }
 
   function decreaseFocus() {
-    if(focusDuration > 5 && !isTimerRunning) {
+    if(checkFocusDecrease(focusDuration, isTimerRunning)) {
       setFocusDuration(focusDuration - 5)
     }
   }
 
-  function increaseBreak() {
-    if(breakDuration < 15  && !isTimerRunning) {
+   function increaseBreak() {
+    if(checkBreakIncrease(breakDuration, isTimerRunning)) {
       setBreakDuration(breakDuration + 1)
     }
   }
 
+
   function decreaseBreak() {
-    if(breakDuration > 1  && !isTimerRunning) {
+    if(checkBreakDecrease(breakDuration, isTimerRunning)) {
       setBreakDuration(breakDuration - 1)
     }
   }
