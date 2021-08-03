@@ -139,10 +139,10 @@ function Pomodoro() {
   function barPercent() {
     if(session?.label === "Focusing") {
       const result = session?.timeRemaining/(focusDuration * 60) * 100;
-      return 100 % result;
+      return 100 - result;
     } else {
       const result = session?.timeRemaining/(breakDuration * 60) * 100;
-      return 100 % result;
+      return 100 - result;
     }
   }
 
