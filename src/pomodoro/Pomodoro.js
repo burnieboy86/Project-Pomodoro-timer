@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import classNames from "../utils/class-names";
 import useInterval from "../utils/useInterval";
 import { minutesToDuration, secondsToDuration } from "../utils/duration";
-import checkFocusIncrease from "../utils/increaseFocus";
-import checkFocusDecrease from "../utils/decreaseFocus";
-import checkBreakIncrease from "../utils/increaseBreak";
-import checkBreakDecrease from "../utils/decreaseBreak";
+import checkFocusIncrease from "../utils/externalComponent4";
+import checkFocusDecrease from "../utils/externalComponent2";
+import checkBreakIncrease from "../utils/externalComponent3";
+import checkBreakDecrease from "../utils/externalComponent1";
 
 // These functions are defined outside of the component to insure they do not have access to state
 // and are, therefore more likely to be pure.
